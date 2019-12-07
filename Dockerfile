@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev"; \
+RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev libcap-dev"; \
     VERSION=1.18; \
     apk --no-cache add pcre openssl libconfig $BUILD_DEPS && \
     cd /tmp && \
@@ -8,6 +8,7 @@ RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev"; \
     unzip sslh.zip && \
     cd sslh-$VERSION && \
     sed -i 's/^USELIBPCRE=.*/USELIBPCRE=1/' Makefile && \
+    sed -i 's/^USELIBCAP=.*/USELIBCAP=1/' Makefile && \
     make sslh && \
     cp ./sslh-fork ./sslh-select /bin && \
     cp COPYING / && \
