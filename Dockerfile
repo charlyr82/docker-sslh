@@ -23,7 +23,7 @@ RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev libcap-dev"; \
     make sslh && \
     cp ./sslh-fork ./sslh-select /bin && \
     cp COPYING / && \
-    ln /bin/sslh-select /bin/sslh && \
+    ln /bin/sslh-fork /bin/sslh && \
     apk del $BUILD_DEPS && \
     cd / && rm -rf /tmp/sshl*
 
