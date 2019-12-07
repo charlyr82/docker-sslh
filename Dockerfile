@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev libcap-dev"; \
-    VERSION=1.18; \
+    VERSION=1.20; \
     apk --no-cache add pcre openssl libconfig $BUILD_DEPS && \
     cd /tmp && \
     wget -O sslh.zip https://github.com/yrutschle/sslh/archive/v$VERSION.zip && \
