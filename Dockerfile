@@ -11,7 +11,7 @@ ENV HTTPS_PORT 8443
 ENV SHADOWSOCKS_HOST localhost
 ENV SHADOWSOCKS_PORT 8388
 
-RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev libcap-dev"; \
+RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev"; \
     VERSION=1.20; \
     apk --no-cache add pcre openssl libconfig $BUILD_DEPS && \
     cd /tmp && \
@@ -19,7 +19,6 @@ RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev libcap-dev"; \
     unzip sslh.zip && \
     cd sslh-$VERSION && \
     sed -i 's/^USELIBPCRE=.*/USELIBPCRE=1/' Makefile && \
-    sed -i 's/^USELIBCAP=.*/USELIBCAP=1/' Makefile && \
     make sslh && \
     cp ./sslh-fork ./sslh-select /bin && \
     cp COPYING / && \
