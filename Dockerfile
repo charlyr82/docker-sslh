@@ -20,9 +20,9 @@ RUN BUILD_DEPS="gcc pcre-dev musl-dev make libconfig-dev"; \
     cd sslh-$VERSION && \
     sed -i 's/^USELIBPCRE=.*/USELIBPCRE=1/' Makefile && \
     make sslh && \
-    cp ./sslh-fork ./sslh-select /bin && \
+    cp ./sslh-fork ./sslh-select /usr/local/bin && \
     cp COPYING / && \
-    ln /bin/sslh-fork /bin/sslh && \
+    ln /usr/local/bin/sslh-fork /usr/local/bin/sslh && \
     apk del $BUILD_DEPS && \
     cd / && rm -rf /tmp/sshl*
 
